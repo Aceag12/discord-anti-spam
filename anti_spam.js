@@ -52,7 +52,7 @@ module.exports = async (client, options) => {
           m.channel.send(`<@!${m.author.id}>, ${banMsg}`);
           return true;
        }).catch(() => {
-          m.channel.send(`Oops, seems like i don't have sufficient permissions to ban <@!${message.author.id}>!`);
+          m.channel.send(`:x: Looks like I can't ban <@!${message.author.id}>!`);
           return false;
       });
     }
@@ -66,6 +66,7 @@ module.exports = async (client, options) => {
    }
 
     if (message.author.bot) return;
+    if (message.guild.member(message.author).hasPermission('ADMINISTRATOR')) return;
     if (message.channel.type !== "text" || !message.member || !message.guild || !message.channel.guild) return;
    
     if (message.member.roles.some(r => exemptRoles.includes(r.name)) || exemptUsers.includes(message.author.tag)) return;
