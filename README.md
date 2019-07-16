@@ -14,6 +14,9 @@ npm i discord-anti-spam
 ## Example
 Example of a basic bot handling spam messages using this module.
 
+**Note:**
+It will ignore the people with `MANAGE_MESSAGES` permissions.
+
 ```js
 const Discord = require('discord.js');
 const antispam = require('discord-anti-spam'); // Requiring this module.
